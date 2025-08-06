@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCHU - Unieke Handbeschilderde Schoenen</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #333;
+            border: 2px solid #333;
+        }
+
+        .btn-secondary:hover {
+            background: #333;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #667eea;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
+        .nav-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .bar:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-toggle.active .bar:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-title {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #667eea;
+            font-weight: 400;
+        }
+
+        .hero-main {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-accent {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .shoe-showcase {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .shoe-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0.3;
+            transition: all 0.5s ease;
+            text-align: center;
+        }
+
+        .shoe-card.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .shoe-image {
+            width: 200px;
+            height: 150px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .shoe-1 {
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 300% 300%;
+            animation: gradientShift 4s ease infinite;
+        }
+
+        .shoe-2 {
+            background: linear-gradient(45deg, #2ed573, #7bed9f, #70a1ff, #5352ed);
+            background-size: 300% 300%;
+            animation: gradientShift 4s ease infinite 1s;
+        }
+
+        .shoe-3 {
+            background: linear-gradient(45deg, #ff6348, #ff9f43, #feca57, #ff6b6b);
+            background-size: 300% 300%;
+            animation: gradientShift 4s ease infinite 2s;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .paint-splash {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .splash-1 {
+            width: 200px;
+            height: 200px;
+            background: #667eea;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .splash-2 {
+            width: 150px;
+            height: 150px;
+            background: #764ba2;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .splash-3 {
+            width: 100px;
+            height: 100px;
+            background: #f093fb;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: #fff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            flex-shrink: 0;
+        }
+
+        .feature h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature p {
+            color: #666;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .about-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .painter-workspace {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .palette {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .color-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .color-1 { background: #ff6b6b; }
+        .color-2 { background: #4ecdc4; }
+        .color-3 { background: #45b7d1; }
+        .color-4 { background: #f9ca24; }
+        .color-5 { background: #6c5ce7; }
+
+        .brush {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 80px;
+            height: 20px;
+            background: linear-gradient(45deg, #8b4513, #daa520);
+            border-radius: 10px;
+            transform: rotate(-30deg);
+        }
+
+        .canvas-shoe {
+            width: 120px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            border-radius: 15px;
+            position: relative;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            position: relative;
+        }
+
+        .abstract-1 { background: linear-gradient(45deg, #667eea, #764ba2, #f093fb); }
+        .nature-1 { background: linear-gradient(45deg, #11998e, #38ef7d, #2ed573); }
+        .geometric-1 { background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb); }
+        .portrait-1 { background: linear-gradient(45deg, #fc466b, #3f5efb, #833ab4); }
+        .abstract-2 { background: linear-gradient(45deg, #fa709a, #fee140, #ff9a9e); }
+        .nature-2 { background: linear-gradient(45deg, #4facfe, #00f2fe, #43e97b); }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 100px 1fr 200px;
+            gap: 2rem;
+            align-items: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f1f3ff 100%);
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.1);
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .step-content h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .step-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .step-visual {
+            width: 150px;
+            height: 100px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .consultation { background: linear-gradient(45deg, #667eea, #764ba2); }
+        .design { background: linear-gradient(45deg, #f093fb, #f5576c); }
+        .painting { background: linear-gradient(45deg, #4facfe, #00f2fe); }
+        .finishing { background: linear-gradient(45deg, #43e97b, #38f9d7); }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact .section-header h2,
+        .contact .section-header p {
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            pointer-events: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .form-group label.active,
+        .form-group input:focus + label,
+        .form-group textarea:focus + label,
+        .form-group select:focus + label {
+            top: -10px;
+            left: 10px;
+            font-size: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group select option {
+            background: #333;
+            color: white;
+        }
+
+        .contact-form .btn-primary {
+            width: 100%;
+            margin-top: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-form .btn-primary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #667eea;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            text-align: center;
+            opacity: 0.6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+                padding: 6rem 20px 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .step-visual {
+                justify-self: center;
+            }
+
+            .gallery-filter {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .features {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .shoe-showcase {
+                width: 250px;
+                height: 250px;
+            }
+
+            .shoe-image {
+                width: 150px;
+                height: 120px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .navbar,
+            .hero-background,
+            .contact-form,
+            .footer {
+                display: none;
+            }
+
+            body {
+                color: #000;
+                background: white;
+            }
+
+            .hero {
+                background: white;
+                min-height: auto;
+                padding: 2rem 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>SCHU</h2>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Thuis</a>
+                <a href="#about" class="nav-link">Over Ons</a>
+                <a href="#gallery" class="nav-link">Galerij</a>
+                <a href="#process" class="nav-link">Proces</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-subtitle">Jouw idee</span>
+                    <span class="hero-main">Onze Kunst</span>
+                    <span class="hero-accent">Unieke Schoenen</span>
+                </h1>
+                <p class="hero-description">
+                    Elke schoen van SCHU is een kunstwerk op zich, met de hand geschilderd en volledig op maat gemaakt. 
+                    Geen massaproductie, maar échte creativiteit aan je voeten.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Ontwerp Nu</button>
+                    <button class="btn btn-secondary">Bekijk Galerij</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="shoe-showcase">
+                    <div class="shoe-card active">
+                        <div class="shoe-image shoe-1"></div>
+                        <h3>Abstract Art</h3>
+                    </div>
+                    <div class="shoe-card">
+                        <div class="shoe-image shoe-2"></div>
+                        <h3>Nature Inspired</h3>
+                    </div>
+                    <div class="shoe-card">
+                        <div class="shoe-image shoe-3"></div>
+                        <h3>Geometric</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="paint-splash splash-1"></div>
+            <div class="paint-splash splash-2"></div>
+            <div class="paint-splash splash-3"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Over SCHU</h2>
+                <p>Waar kunst en mode samenkomen</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Handgemaakt. Uniek. Jouw.</h3>
+                    <p>
+                        Bij SCHU geloven we dat schoenen meer zijn dan alleen een accessoire. Ze zijn een expressie van wie je bent. 
+                        Daarom maken we elk paar volledig op maat, met de hand beschilderd volgens jouw visie.
+                    </p>
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">🎨</div>
+                            <div>
+                                <h4>Handbeschilderd</h4>
+                                <p>Elk ontwerp wordt met zorg en precisie met de hand geschilderd</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">✨</div>
+                            <div>
+                                <h4>100% Uniek</h4>
+                                <p>Geen twee paar zijn hetzelfde - jouw schoenen zijn echt van jou</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">💫</div>
+                            <div>
+                                <h4>Op Maat</h4>
+                                <p>Volledig aangepast aan jouw stijl, maat en voorkeuren</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="painter-workspace">
+                        <div class="palette">
+                            <div class="color-dot color-1"></div>
+                            <div class="color-dot color-2"></div>
+                            <div class="color-dot color-3"></div>
+                            <div class="color-dot color-4"></div>
+                            <div class="color-dot color-5"></div>
+                        </div>
+                        <div class="brush"></div>
+                        <div class="canvas-shoe"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Onze Creaties</h2>
+                <p>Inspiratie uit onze collectie</p>
+            </div>
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">Alle</button>
+                <button class="filter-btn" data-filter="abstract">Abstract</button>
+                <button class="filter-btn" data-filter="nature">Natuur</button>
+                <button class="filter-btn" data-filter="geometric">Geometrisch</button>
+                <button class="filter-btn" data-filter="portrait">Portret</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="abstract">
+                    <div class="gallery-image abstract-1"></div>
+                    <div class="gallery-overlay">
+                        <h4>Cosmic Dreams</h4>
+                        <p>Abstract kunstwerk geïnspireerd door de kosmos</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="nature">
+                    <div class="gallery-image nature-1"></div>
+                    <div class="gallery-overlay">
+                        <h4>Forest Walk</h4>
+                        <p>Botanische elementen in aardse tinten</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="geometric">
+                    <div class="gallery-image geometric-1"></div>
+                    <div class="gallery-overlay">
+                        <h4>Digital Age</h4>
+                        <p>Moderne geometrische patronen</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="portrait">
+                    <div class="gallery-image portrait-1"></div>
+                    <div class="gallery-overlay">
+                        <h4>Van Gogh Tribute</h4>
+                        <p>Klassieke kunstwerken hergeïnterpreteerd</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="abstract">
+                    <div class="gallery-image abstract-2"></div>
+                    <div class="gallery-overlay">
+                        <h4>Color Explosion</h4>
+                        <p>Levendige kleuren in perfecte harmonie</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="nature">
+                    <div class="gallery-image nature-2"></div>
+                    <div class="gallery-overlay">
+                        <h4>Ocean Waves</h4>
+                        <p>De kracht en schoonheid van de oceaan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ons Proces</h2>
+                <p>Van idee tot kunstwerk in 4 stappen</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Consultatie</h3>
+                        <p>We bespreken jouw ideeën, stijl en voorkeuren. Samen creëren we het perfecte ontwerp voor jouw unieke schoenen.</p>
+                    </div>
+                    <div class="step-visual consultation"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Ontwerp</h3>
+                        <p>Onze kunstenaars maken een gedetailleerde schets van jouw ontwerp. Je krijgt een preview voordat we beginnen met schilderen.</p>
+                    </div>
+                    <div class="step-visual design"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Schilderen</h3>
+                        <p>Met precisie en zorg brengen we jouw ontwerp tot leven. Elke lijn wordt met de hand geschilderd met hoogwaardige verf.</p>
+                    </div>
+                    <div class="step-visual painting"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Afwerking</h3>
+                        <p>Je kunstwerk wordt afgewerkt met beschermende coating en zorgvuldig verpakt voor veilige levering aan jouw deur.</p>
+                    </div>
+                    <div class="step-visual finishing"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Start Jouw Ontwerp</h2>
+                <p>Klaar om jouw unieke schoenen te creëren?</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Neem Contact Op</h3>
+                    <p>We horen graag van je! Deel je ideeën met ons en we helpen je om het perfecte paar schoenen te creëren.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@schu-store.nl</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div>
+                                <h4>Telefoon</h4>
+                                <p>+31 6 12345678</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h4>Locatie</h4>
+                                <p>Amsterdam, Nederland</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Jouw Naam</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email Adres</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="category" name="category" required>
+                            <option value="">Selecteer Categorie</option>
+                            <option value="abstract">Abstract</option>
+                            <option value="nature">Natuur</option>
+                            <option value="geometric">Geometrisch</option>
+                            <option value="portrait">Portret</option>
+                            <option value="custom">Custom Ontwerp</option>
+                        </select>
+                        <label for="category">Ontwerp Categorie</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Beschrijf je Idee</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Verstuur Aanvraag</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SCHU</h3>
+                    <p>Unieke handbeschilderde schoenen die jouw persoonlijkheid weerspiegelen.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#home">Thuis</a></li>
+                        <li><a href="#about">Over Ons</a></li>
+                        <li><a href="#gallery">Galerij</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Service</h4>
+                    <ul>
+                        <li><a href="#">Maatwerk</a></li>
+                        <li><a href="#">Verzending</a></li>
+                        <li><a href="#">Garantie</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Volg Ons</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Pinterest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SCHU Store. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Gallery Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        item.style.opacity = '1';
+                    } else {
+                        item.style.display = 'none';
+                        item.style.opacity = '0';
+                    }
+                });
+            });
+        });
+
+        // Shoe Showcase Animation
+        const shoeCards = document.querySelectorAll('.shoe-card');
+        let currentIndex = 0;
+
+        function rotateShoes() {
+            shoeCards.forEach(card => card.classList.remove('active'));
+            currentIndex = (currentIndex + 1) % shoeCards.length;
+            shoeCards[currentIndex].classList.add('active');
+        }
+
+        setInterval(rotateShoes, 3000);
+
+        // Form Animation
+        const formGroups = document.querySelectorAll('.form-group');
+
+        formGroups.forEach(group => {
+            const input = group.querySelector('input, textarea, select');
+            const label = group.querySelector('label');
+
+            input.addEventListener('focus', () => {
+                label.classList.add('active');
+            });
+
+            input.addEventListener('blur', () => {
+                if (!input.value) {
+                    label.classList.remove('active');
+                }
+            });
+
+            if (input.value) {
+                label.classList.add('active');
+            }
+        });
+
+        // Form Submission
+        const contactForm = document.querySelector('.contact-form');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulate form submission
+            const button = contactForm.querySelector('.btn');
+            const originalText = button.textContent;
+            
+            button.textContent = 'Versturen...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = 'Verzonden! ✓';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    contactForm.reset();
+                    formGroups.forEach(group => {
+                        group.querySelector('label').classList.remove('active');
+                    });
+                }, 2000);
+            }, 1500);
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.8s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
