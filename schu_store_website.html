@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCHU - Unieke Handbeschilderde Schoenen</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>SCHU</h2>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Thuis</a>
+                <a href="#about" class="nav-link">Over Ons</a>
+                <a href="#gallery" class="nav-link">Galerij</a>
+                <a href="#process" class="nav-link">Proces</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-subtitle">Jouw idee</span>
+                    <span class="hero-main">Onze Kunst</span>
+                    <span class="hero-accent">Unieke Schoenen</span>
+                </h1>
+                <p class="hero-description">
+                    Elke schoen van SCHU is een kunstwerk op zich, met de hand geschilderd en volledig op maat gemaakt. 
+                    Geen massaproductie, maar échte creativiteit aan je voeten.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Ontwerp Nu</button>
+                    <button class="btn btn-secondary">Bekijk Galerij</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="shoe-showcase">
+                    <div class="shoe-card active">
+                        <div class="shoe-image shoe-1"></div>
+                        <h3>Abstract Art</h3>
+                    </div>
+                    <div class="shoe-card">
+                        <div class="shoe-image shoe-2"></div>
+                        <h3>Nature Inspired</h3>
+                    </div>
+                    <div class="shoe-card">
+                        <div class="shoe-image shoe-3"></div>
+                        <h3>Geometric</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="paint-splash splash-1"></div>
+            <div class="paint-splash splash-2"></div>
+            <div class="paint-splash splash-3"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Over SCHU</h2>
+                <p>Waar kunst en mode samenkomen</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Handgemaakt. Uniek. Jouw.</h3>
+                    <p>
+                        Bij SCHU geloven we dat schoenen meer zijn dan alleen een accessoire. Ze zijn een expressie van wie je bent. 
+                        Daarom maken we elk paar volledig op maat, met de hand beschilderd volgens jouw visie.
+                    </p>
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">🎨</div>
+                            <div>
+                                <h4>Handbeschilderd</h4>
+                                <p>Elk ontwerp wordt met zorg en precisie met de hand geschilderd</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">✨</div>
+                            <div>
+                                <h4>100% Uniek</h4>
+                                <p>Geen twee paar zijn hetzelfde - jouw schoenen zijn echt van jou</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">💫</div>
+                            <div>
+                                <h4>Op Maat</h4>
+                                <p>Volledig aangepast aan jouw stijl, maat en voorkeuren</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="painter-workspace">
+                        <div class="palette">
+                            <div class="color-dot color-1"></div>
+                            <div class="color-dot color-2"></div>
+                            <div class="color-dot color-3"></div>
+                            <div class="color-dot color-4"></div>
+                            <div class="color-dot color-5"></div>
+                        </div>
+                        <div class="brush"></div>
+                        <div class="canvas-shoe"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Onze Creaties</h2>
+                <p>Inspiratie uit onze collectie</p>
+            </div>
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">Alle</button>
+                <button class="filter-btn" data-filter="abstract">Abstract</button>
+                <button class="filter-btn" data-filter="nature">Natuur</button>
+                <button class="filter-btn" data-filter="geometric">Geometrisch</button>
+                <button class="filter-btn" data-filter="portrait">Portret</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="abstract">
+                    <div class="gallery-image abstract-1"></div>
+                    <div class="gallery-overlay">
+                        <h4>Cosmic Dreams</h4>
+                        <p>Abstract kunstwerk geïnspireerd door de kosmos</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="nature">
+                    <div class="gallery-image nature-1"></div>
+                    <div class="gallery-overlay">
+                        <h4>Forest Walk</h4>
+                        <p>Botanische elementen in aardse tinten</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="geometric">
+                    <div class="gallery-image geometric-1"></div>
+                    <div class="gallery-overlay">
+                        <h4>Digital Age</h4>
+                        <p>Moderne geometrische patronen</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="portrait">
+                    <div class="gallery-image portrait-1"></div>
+                    <div class="gallery-overlay">
+                        <h4>Van Gogh Tribute</h4>
+                        <p>Klassieke kunstwerken hergeïnterpreteerd</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="abstract">
+                    <div class="gallery-image abstract-2"></div>
+                    <div class="gallery-overlay">
+                        <h4>Color Explosion</h4>
+                        <p>Levendige kleuren in perfecte harmonie</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="nature">
+                    <div class="gallery-image nature-2"></div>
+                    <div class="gallery-overlay">
+                        <h4>Ocean Waves</h4>
+                        <p>De kracht en schoonheid van de oceaan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ons Proces</h2>
+                <p>Van idee tot kunstwerk in 4 stappen</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Consultatie</h3>
+                        <p>We bespreken jouw ideeën, stijl en voorkeuren. Samen creëren we het perfecte ontwerp voor jouw unieke schoenen.</p>
+                    </div>
+                    <div class="step-visual consultation"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Ontwerp</h3>
+                        <p>Onze kunstenaars maken een gedetailleerde schets van jouw ontwerp. Je krijgt een preview voordat we beginnen met schilderen.</p>
+                    </div>
+                    <div class="step-visual design"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Schilderen</h3>
+                        <p>Met precisie en zorg brengen we jouw ontwerp tot leven. Elke lijn wordt met de hand geschilderd met hoogwaardige verf.</p>
+                    </div>
+                    <div class="step-visual painting"></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Afwerking</h3>
+                        <p>Je kunstwerk wordt afgewerkt met beschermende coating en zorgvuldig verpakt voor veilige levering aan jouw deur.</p>
+                    </div>
+                    <div class="step-visual finishing"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Start Jouw Ontwerp</h2>
+                <p>Klaar om jouw unieke schoenen te creëren?</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Neem Contact Op</h3>
+                    <p>We horen graag van je! Deel je ideeën met ons en we helpen je om het perfecte paar schoenen te creëren.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@schu-store.nl</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div>
+                                <h4>Telefoon</h4>
+                                <p>+31 6 12345678</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h4>Locatie</h4>
+                                <p>Amsterdam, Nederland</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Jouw Naam</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email Adres</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="category" name="category" required>
+                            <option value="">Selecteer Categorie</option>
+                            <option value="abstract">Abstract</option>
+                            <option value="nature">Natuur</option>
+                            <option value="geometric">Geometrisch</option>
+                            <option value="portrait">Portret</option>
+                            <option value="custom">Custom Ontwerp</option>
+                        </select>
+                        <label for="category">Ontwerp Categorie</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Beschrijf je Idee</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Verstuur Aanvraag</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SCHU</h3>
+                    <p>Unieke handbeschilderde schoenen die jouw persoonlijkheid weerspiegelen.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#home">Thuis</a></li>
+                        <li><a href="#about">Over Ons</a></li>
+                        <li><a href="#gallery">Galerij</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Service</h4>
+                    <ul>
+                        <li><a href="#">Maatwerk</a></li>
+                        <li><a href="#">Verzending</a></li>
+                        <li><a href="#">Garantie</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Volg Ons</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Pinterest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SCHU Store. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Gallery Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        item.style.opacity = '1';
+                    } else {
+                        item.style.display = 'none';
+                        item.style.opacity = '0';
+                    }
+                });
+            });
+        });
+
+        // Shoe Showcase Animation
+        const shoeCards = document.querySelectorAll('.shoe-card');
+        let currentIndex = 0;
+
+        function rotateShoes() {
+            shoeCards.forEach(card => card.classList.remove('active'));
+            currentIndex = (currentIndex + 1) % shoeCards.length;
+            shoeCards[currentIndex].classList.add('active');
+        }
+
+        setInterval(rotateShoes, 3000);
+
+        // Form Animation
+        const formGroups = document.querySelectorAll('.form-group');
+
+        formGroups.forEach(group => {
+            const input = group.querySelector('input, textarea, select');
+            const label = group.querySelector('label');
+
+            input.addEventListener('focus', () => {
+                label.classList.add('active');
+            });
+
+            input.addEventListener('blur', () => {
+                if (!input.value) {
+                    label.classList.remove('active');
+                }
+            });
+
+            if (input.value) {
+                label.classList.add('active');
+            }
+        });
+
+        // Form Submission
+        const contactForm = document.querySelector('.contact-form');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulate form submission
+            const button = contactForm.querySelector('.btn');
+            const originalText = button.textContent;
+            
+            button.textContent = 'Versturen...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = 'Verzonden! ✓';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    contactForm.reset();
+                    formGroups.forEach(group => {
+                        group.querySelector('label').classList.remove('active');
+                    });
+                }, 2000);
+            }, 1500);
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.8s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
